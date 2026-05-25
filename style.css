@@ -1,0 +1,199 @@
+:root {
+    --primary: #2b6cb0;
+    --primary-dark: #1a365d;
+    --accent: #3182ce;
+    --success: #38a169;
+    --danger: #e53e3e;
+    --background: #f7fafc;
+    --surface: #ffffff;
+    --text: #2d3748;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    background: var(--surface);
+    width: 100%;
+    max-width: 450px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+    padding: 30px;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tela de Login */
+.brand {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.brand h1 { color: var(--primary); font-size: 2rem; }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+button {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+#btn-start {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+#btn-start:hover { background: var(--primary-dark); }
+
+/* Tela de Mapa */
+.welcome-msg { margin-bottom: 20px; color: #4a5568; }
+.map-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.map-node {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #edf2f7;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    text-align: left;
+}
+.map-node.active {
+    border-color: var(--accent);
+    background: #ebf8ff;
+}
+.map-node.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.map-node .icon { font-size: 1.5rem; margin-right: 15px; }
+.map-node .label { flex-grow: 1; font-weight: bold; }
+.map-node .status { font-size: 0.8rem; color: #718096; }
+
+/* Tela de Jogo (Elementos adaptados e ampliados via testes) */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.question-box {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.question-box h3 { font-size: 1.1rem; margin-bottom: 15px; }
+
+/* Objeto Visual do Círculo Fracionário (Acessibilidade) */
+.fraction-visual {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-dark);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    overflow: hidden;
+}
+.slice {
+    border: 1px solid var(--primary-dark);
+    background-color: white;
+}
+.slice.filled {
+    background-color: #f6ad55; /* Cor laranja de destaque controlada */
+}
+
+/* Área de Opções - Botões com tamanho ampliado em +30% para telas touch */
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.option-btn {
+    padding: 18px 10px; /* Padding vertical estendido para facilitar o clique */
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: white;
+    border: 2px solid #cbd5e0;
+    border-radius: 10px;
+}
+.option-btn:hover { background: #f7fafc; border-color: #a0aec0; }
+
+.feedback-msg {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+    min-height: 24px;
+}
+.feedback-msg.correct { color: var(--success); }
+.feedback-msg.wrong { color: var(--danger); }
+
+/* Banner exibido quando conclui nível */
+.level-banner {
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #f6ad55, #f6e05e);
+    color: #2d3748;
+    font-weight: 800;
+    margin-bottom: 12px;
+    display: none;
+}
+.level-banner.show { display: block; animation: pop 0.35s ease-in-out; }
+@keyframes pop { from { transform: scale(0.95); opacity: 0 } to { transform: scale(1); opacity: 1 } }
+
+.btn-back {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid #cbd5e0;
+    color: #718096;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.btn-back:hover { background: #edf2f7; }

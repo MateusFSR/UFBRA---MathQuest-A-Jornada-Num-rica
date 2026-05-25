@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathQuest: Jornada Numérica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <section id="screen-login" class="screen active">
+            <div class="brand">
+                <h1>🎮 MathQuest</h1>
+                <p>Jornada Numérica</p>
+            </div>
+            <div class="form-group">
+                <label for="student-name">Qual é o seu primeiro nome?</label>
+                <input type="text" id="student-name" placeholder="Ex: Lucas" autocomplete="off">
+                
+                <label for="student-class">Selecione sua Turma:</label>
+                <select id="student-class">
+                    <option value="6A">6º Ano - Turma A</option>
+                    <option value="6B">6º Ano - Turma B</option>
+                    <option value="6C">6º Ano - Turma C</option>
+                </select>
+                
+                <button id="btn-start">Iniciar Missão</button>
+            </div>
+        </section>
+
+        <section id="screen-map" class="screen">
+            <h2>Mapa de Missões</h2>
+            <p class="welcome-msg">Olá, <span class="player-name"></span>! Escolha seu desafio:</p>
+            
+            <div class="map-grid">
+                <button class="map-node active" id="btn-level-1">
+                    <span class="icon">🏝️</span>
+                    <span class="label">Ilha das Frações</span>
+                    <span class="status">Disponível</span>
+                </button>
+                <button class="map-node locked" id="btn-level-2" disabled>
+                    <span class="icon">⛰️</span>
+                    <span class="label">Montanha de Algebrismo</span>
+                    <span class="status">Bloqueado</span>
+                </button>
+                <button class="map-node locked" id="btn-level-3" disabled>
+                    <span class="icon">🏰</span>
+                    <span class="label">Castelo da Geometria</span>
+                    <span class="status">Bloqueado</span>
+                </button>
+                <button class="map-node locked" id="btn-level-4" disabled>
+                    <span class="icon">🔎</span>
+                    <span class="label">Vila dos Números Primos</span>
+                    <span class="status">Bloqueado</span>
+                </button>
+                <button class="map-node locked" id="btn-level-5" disabled>
+                    <span class="icon">🧪</span>
+                    <span class="label">Lago das Medidas</span>
+                    <span class="status">Bloqueado</span>
+                </button>
+            </div>
+            <button class="btn-back" id="btn-back-login">Sair</button>
+        </section>
+
+        <section id="screen-game" class="screen">
+            <div class="game-header">
+                <span class="level-title">🏝️ Ilha das Frações</span>
+                <span class="score-display">Pontos: <strong id="score">0</strong></span>
+            </div>
+
+            <div class="question-box">
+                <h3>Qual fração representa a área colorida da figura abaixo?</h3>
+                <div id="fraction-visual" class="fraction-visual">
+                    <div class="slice filled"></div>
+                    <div class="slice filled"></div>
+                    <div class="slice"></div>
+                    <div class="slice"></div>
+                </div>
+            </div>
+
+            <div class="options-container">
+                <button class="option-btn" data-correct="false">1/4</button>
+                <button class="option-btn" data-correct="true">2/4</button>
+                <button class="option-btn" data-correct="false">3/4</button>
+                <button class="option-btn" data-correct="false">2/2</button>
+            </div>
+
+            <div id="feedback" class="feedback-msg"></div>
+            <div id="level-banner" class="level-banner"></div>
+
+            <button class="btn-back" id="btn-back-map">Voltar ao Mapa</button>
+        </section>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
